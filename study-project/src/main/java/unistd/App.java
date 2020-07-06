@@ -3,6 +3,9 @@ package unistd;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * アプリケーションの起動クラスです。
+ */
 @SpringBootApplication
 public class App {
     public static void main(String[] args) {
