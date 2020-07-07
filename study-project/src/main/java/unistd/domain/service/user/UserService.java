@@ -1,4 +1,4 @@
-package unistd.service.user;
+package unistd.domain.service.user;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import unistd.service.model.User;
-import unistd.service.repository.UserRepository;
+import unistd.domain.service.model.User;
+import unistd.domain.service.repository.UserRepository;
 
 /**
  * ユーザー情報を扱うServiceです。

@@ -10,7 +10,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import unistd.service.model.User;
+import unistd.domain.service.model.User;
+import unistd.domain.service.user.UserService;
 
 /**
  * {@link UserService} のテストです。

@@ -1,12 +1,11 @@
 package unistd.api;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HelloController {
+public class UserController {
 
     @GetMapping("/hello")
     public String hello(Model model) {
@@ -14,4 +13,5 @@ public class HelloController {
         model.addAttribute("message", "Hello Thymeleaf!");
         return "hello";
     }
+
 }
