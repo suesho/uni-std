@@ -1,0 +1,24 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>ユーザー作成画面</title>
+    </head>
+    <body>
+        <h1>ユーザー作成</h1>
+        <form th:action="@{/user}" th:object="${newUser}" method="post">
+	        <table border="1">
+	            <tr>
+	                <td align="right"><b>User Name : </b></td>
+	                <td><input type="text" class="form-control" th:field="*{name}"/></td>
+	            </tr>
+	            <tr>
+	                <td align="right"><b>Mail Address : </b></td>
+	                <td><input type="text" class="form-control" th:field="*{mailAddress}"/></td>
+	            </tr>
+	        </table>
+            <button type="submit">作成</button>
+            <button type="button" onclick="history.back()">キャンセル</button>
+        </form>
+    </body>
+</html>
