@@ -22,12 +22,12 @@
 
                 <td>
                     <a th:href="@{/editUserForm}" th:object="${user}">
-                        <button type="button">編集3</button>
+                        <button type="button">編集</button>
                     </a>
                 </td>
 
                 <td>
-                    <form th:action="@{/user/{id}(id=*{user.userId})}" th:method="delete">
+                    <form th:action="@{/user/{id}/deleteUserForm(id=*{user.userId})}">
                         <button type="submit">削除</button>
                     </form>
                 </td>

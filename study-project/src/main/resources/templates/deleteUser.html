@@ -1,0 +1,24 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>ユーザー削除画面</title>
+    </head>
+    <body>
+        このユーザーを削除しますか？
+        <table border="1" th:object="${user}">
+            <tr>
+                <td align="right"><b>User Name : </b></td>
+                <td th:text=*{name}></td>
+            </tr>
+            <tr>
+                <td align="right"><b>Mail Address : </b></td>
+                   <td th:text=*{mailAddress}></td>
+            </tr>
+        </table>
+        <form th:action="@{/user/{id}/(id=*{user.userId})}" th:method="delete">
+            <button type="submit">削除</button>
+            <button type="button" onclick="history.back()">キャンセル</button>
+        </form>
+    </body>
+</html>

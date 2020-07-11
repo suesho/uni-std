@@ -1,4 +1,4 @@
-package unistd.service.user;
+package unistd.domain.service.user;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -11,7 +11,6 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import unistd.domain.service.model.User;
-import unistd.domain.service.user.UserService;
 
 /**
  * {@link UserService} のテストです。
@@ -39,6 +38,20 @@ public class UserServiceTest {
                         .name("user1")
                         .mailAddress("user1@example.com")
                         .build());
+    }
+
+    /**
+     * {@link UserService#getUser(int)} のテストです。
+     */
+    @Test
+    public void getUser() {
+
+        service.addUser("user1", "aaa@example.com");
+        User user = service.addUser("user2", "bbb@example.com");
+        service.addUser("user3", "ccc@example.com");
+
+        assertThat(service.getUser(user.getUserId()))
+                .isEqualTo(user);
     }
 
     /**

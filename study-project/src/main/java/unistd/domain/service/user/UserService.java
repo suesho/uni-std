@@ -36,6 +36,16 @@ public class UserService {
     }
 
     /**
+     * ユーザーを取得します。
+     * @param userId ユーザーID
+     * @return ユーザー
+     */
+    public User getUser(int userId) {
+
+        return userRepository.findOne(userId);
+    }
+
+    /**
      * ユーザー情報一覧を取得します。
      * @return ユーザー情報一覧
      */

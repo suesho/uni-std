@@ -60,6 +60,15 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping("/user/{userId}/deleteUserForm")
+    public String deleteUserForm(@PathVariable("userId") int userId, Model model) {
+
+        User user = service.getUser(userId);
+
+        model.addAttribute("user", user);
+        return "deleteUser";
+    }
+
     @DeleteMapping("/user/{userId}")
     public String deleteUser(@PathVariable("userId") int userId, Model model) {
 
