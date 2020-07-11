@@ -15,6 +15,9 @@ import lombok.RequiredArgsConstructor;
 import unistd.domain.service.model.User;
 import unistd.domain.service.user.UserService;
 
+/**
+ * ユーザー関連機能のControllerです。
+ */
 @Controller
 @RequiredArgsConstructor
 public class UserController {
@@ -30,7 +33,7 @@ public class UserController {
         return "users";
     }
 
-    @GetMapping("/user/newUserForm")
+    @GetMapping("/users/new-user-form")
     public String newUserForm(Model model) {
 
         // 入力フォームのために空のオブジェクトを渡してあげる
@@ -38,7 +41,7 @@ public class UserController {
         return "newUser";
     }
 
-    @PostMapping("/user")
+    @PostMapping("/users")
     public String addUser(@ModelAttribute("newUser") NewUser newUser) {
 
         service.addUser(newUser.getName(), newUser.getMailAddress());
@@ -46,7 +49,7 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/user/{userId}/editUserForm")
+    @GetMapping("/users/{userId}/edit-user-form")
     public String editUserForm(@PathVariable("userId") int userId, Model model) {
 
         User user = service.getUser(userId);
@@ -55,7 +58,7 @@ public class UserController {
         return "editUser";
     }
 
-    @PutMapping("/user/{userId}")
+    @PutMapping("/users/{userId}")
     public String updateUser(@PathVariable("userId") int userId, @ModelAttribute("user") User user) {
 
         user.setUserId(userId);
@@ -64,7 +67,7 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/user/{userId}/deleteUserForm")
+    @GetMapping("/users/{userId}/delete-user-form")
     public String deleteUserForm(@PathVariable("userId") int userId, Model model) {
 
         User user = service.getUser(userId);
@@ -73,7 +76,7 @@ public class UserController {
         return "deleteUser";
     }
 
-    @DeleteMapping("/user/{userId}")
+    @DeleteMapping("/users/{userId}")
     public String deleteUser(@PathVariable("userId") int userId) {
 
         service.deleteUser(userId);

@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>ユーザー編集</h1>
-        <form th:action="@{/user/{id}/(id=*{userId})}" th:method="put" th:object="${user}">
+        <form th:action="@{/users/{id}/(id=*{userId})}" th:method="put" th:object="${user}">
 	        <table border="1">
 	            <tr>
 	                <td align="right"><b>User Name : </b></td>

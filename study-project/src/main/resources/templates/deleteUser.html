@@ -16,7 +16,7 @@
                    <td th:text=*{mailAddress}></td>
             </tr>
         </table>
-        <form th:action="@{/user/{id}(id=*{user.userId})}" th:method="delete">
+        <form th:action="@{/users/{id}(id=*{user.userId})}" th:method="delete">
             <button type="submit">削除</button>
             <button type="button" onclick="history.back()">キャンセル</button>
         </form>
