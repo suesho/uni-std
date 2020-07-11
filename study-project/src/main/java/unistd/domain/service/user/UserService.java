@@ -42,7 +42,7 @@ public class UserService {
      */
     public User getUser(int userId) {
 
-        return userRepository.findOne(userId);
+        return userRepository.findById(userId).orElse(null);
     }
 
     /**
@@ -51,7 +51,7 @@ public class UserService {
      */
     public List<User> getUsers() {
 
-        return userRepository.findAll(new Sort("name"));
+        return userRepository.findAll(Sort.by("name"));
     }
 
     /**
@@ -69,6 +69,6 @@ public class UserService {
      */
     public void deleteUser(int userId) {
 
-        userRepository.delete(userId);
+        userRepository.deleteById(userId);
     }
 }
