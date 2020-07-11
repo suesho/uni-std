@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import lombok.RequiredArgsConstructor;
@@ -40,10 +42,29 @@ public class UserController {
 
         service.addUser(newUser.getName(), newUser.getMailAddress());
 
-        List<User> users = service.getUsers();
+        return "redirect:/";
+    }
 
-        model.addAttribute("users", users);
+    @GetMapping("/editUserForm")
+    public String editUserForm(@ModelAttribute("user") User user, Model model) {
 
-        return "users";
+        model.addAttribute("user", user);
+        return "editUser";
+    }
+
+    @PostMapping("/updateUser")
+    public String updateUser(@ModelAttribute("user") User user, Model model) {
+
+        service.updateUser(user);
+
+        return "redirect:/";
+    }
+
+    @DeleteMapping("/user/{userId}")
+    public String deleteUser(@PathVariable("userId") int userId, Model model) {
+
+        service.deleteUser(userId);
+
+        return "redirect:/";
     }
 }

@@ -7,16 +7,31 @@
     <body>
         <h1>ユーザー情報一覧</h1>
         <a th:href="@{/user}">
-            <button type="button"  class="btn btn-success">新規作成</button>
+            <button type="button">新規作成</button>
         </a>
         <table border="1">
             <tr>
                 <th>User Name</th>
                 <th>Mail Address</th>
+                <th/>
+                <th/>
             </tr>
             <tr th:each="user : ${users}">
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.mailAddress}"></td>
+
+                <td>
+                    <a th:href="@{/editUserForm}" th:object="${user}">
+                        <button type="button">編集3</button>
+                    </a>
+                </td>
+
+                <td>
+                    <form th:action="@{/user/{id}(id=*{user.userId})}" th:method="delete">
+                        <button type="submit">削除</button>
+                    </form>
+                </td>
+
             </tr>
         </table>
     </body>
