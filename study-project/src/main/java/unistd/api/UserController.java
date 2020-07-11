@@ -29,7 +29,7 @@ public class UserController {
         return "users";
     }
 
-    @GetMapping("/user")
+    @GetMapping("/user/newUserForm")
     public String newUserForm(Model model) {
 
         // 入力フォームのために空のオブジェクトを渡してあげる
@@ -38,22 +38,26 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public String addUser(@ModelAttribute("newUser") NewUser newUser, Model model) {
+    public String addUser(@ModelAttribute("newUser") NewUser newUser) {
 
         service.addUser(newUser.getName(), newUser.getMailAddress());
 
         return "redirect:/";
     }
 
-    @GetMapping("/editUserForm")
-    public String editUserForm(@ModelAttribute("user") User user, Model model) {
+    @GetMapping("/user/{userId}/editUserForm")
+    public String editUserForm(@PathVariable("userId") int userId, Model model) {
+
+        User user = service.getUser(userId);
 
         model.addAttribute("user", user);
         return "editUser";
     }
 
-    @PostMapping("/updateUser")
-    public String updateUser(@ModelAttribute("user") User user, Model model) {
+    @PostMapping("/user/{userId}")
+    public String updateUser(@PathVariable("userId") int userId, @ModelAttribute("user") User user) {
+
+        user.setUserId(userId);
 
         service.updateUser(user);
 
@@ -70,7 +74,7 @@ public class UserController {
     }
 
     @DeleteMapping("/user/{userId}")
-    public String deleteUser(@PathVariable("userId") int userId, Model model) {
+    public String deleteUser(@PathVariable("userId") int userId) {
 
         service.deleteUser(userId);
 
